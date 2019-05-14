@@ -52,5 +52,8 @@ export class CadastroClienteComponent implements OnInit {
   ngOnInit(){
 
   }
+  onSubmit(){
+    
+  }
 
 }
