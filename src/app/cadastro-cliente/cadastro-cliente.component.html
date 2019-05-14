@@ -1,0 +1,84 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" >
+      <h1 class="text-light">Cadastro de Cliente</h1>
+      <div class="alert  text-danger py-2" [ngClass] ="{'alert-danger': erro!=''}" role="alert">{{erro}}</div> 
+      <div class="form-row">
+
+        <div class="form-group col">
+          <input type="text" placeholder="name" class="form-control" formControlName="Nome" [class.is-invalid]="name.dirty && name.invalid"><br>
+          <span *ngIf="name.hasError ('required' )&& !name.pristine"  class="text-danger">Campo Obrigatório</span>
+        </div>
+        <div class="form-group col">
+          <input type="text" placeholder="email" class="form-control" formControlName="Email" [class.is-invalid]="email.dirty && email.invalid"><br>
+          <span *ngIf="email.hasError ('required' )&& email.dirty" class="text-danger">Campo Obrigatório</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <select class="custom-select" formControlName="tipoPessoa">
+            <option selected [ngValue]="tipoPessoa" value="">Selecione o Tipo de Pessoa</option>
+            <option value="fisica" [ngValue]="tipoPessoa">Fisica</option>
+            <option value="juridica" [ngValue]="tipoPessoa">Juridica</option>
+          </select>
+        </div>
+        <div class="form-group col">
+            <input type="text" placeholder="Cpf" class="form-control" *ngIf="form.value['tipoPessoa']=='fisica'" formControlName="documento" [class.is-invalid]="documento.dirty && documento.invalid">
+            <input type="text" placeholder="cnpj" class="form-control" *ngIf="form.value['tipoPessoa']=='juridica'" formControlName="documento" [class.is-invalid]="documento.dirty && documento.invalid">
+            <span *ngIf="documento.hasError ('required' )&& documento.dirty" class="text-danger">Campo Obrigatório</span>
+        </div>
+        <div class="form-group col">
+            <input type="date" placeholder="Data de Nascimento" class="form-control" *ngIf="form.value['pessoaTipo']=='fisica'" formControlName="dataNascimento">
+            <span *ngIf="dataNascimento.hasError ('required' )&& dataNascimento.dirty" class="text-danger">Campo Obrigatório</span>
+        </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group col">
+            <input type="text" placeholder="celular" class="form-control" formControlName="celular"><br>
+            <span *ngIf="celular.hasError ('required' )&& celular.dirty" class="text-danger">Campo Obrigatório</span>
+        </div>
+        <div class="form-group col">
+            <input type="text" placeholder="Telefone Residencial" class="form-control" formControlName="telefoneResidencial" [class.is-invalid]="telefoneResidencial.dirty && telefoneResidencial.invalid"><br>
+            <span *ngIf="telefoneResidencial.hasError ('required' )&& telefoneResidencial.dirty" class="text-danger">Campo Obrigatório</span>
+        </div>
+        <div class="form-group col">
+            <input type="text" placeholder="Telefone Comercial" class="form-control" formControlName="telefoneComercial"><br>
+            <span *ngIf="telefoneComercial.hasError ('required' )&& telefoneComercial.dirty" class="text-danger">Campo Obrigatório</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <input type="text" placeholder="rua" class="form-control" formControlName="rua"><br>
+          <span *ngIf="rua.hasError ('required' )&& rua.dirty" class="text-danger">Campo Obrigatório</span>
+        </div>
+        <div class="form-group col">
+            <input type="text" placeholder="numero" class="form-control" formControlName="numero"><br>
+            <span *ngIf="numero.hasError ('required' )&& numero.dirty" class="text-danger">Campo Obrigatório</span>
+        </div>
+        <div class="form-group col">
+            <input type="text" placeholder="bairro" class="form-control" formControlName="bairro"><br>
+            <span *ngIf="bairro.hasError ('required' )&& bairro.dirty" class="text-danger">Campo Obrigatório</span>
+        </div>
+        <div class="form-group col">
+            <input type="text" placeholder="cep" class="form-control" formControlName="cep"><br>
+            <span *ngIf="cep.hasError ('required' )&& cep.dirty" class="text-danger">Campo Obrigatório</span>
+        </div> 
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+            <input type="text" placeholder="cidade" class="form-control" formControlName="cidade"><br>
+            <span *ngIf="cidade.hasError ('required' )&& cidade.dirty" class="text-danger">Campo Obrigatório</span>
+        </div>
+        <div class="form-group col">
+            <input type="text" placeholder="estado" class="form-control" formControlName="estado"><br>
+            <span *ngIf="estado.hasError ('required' )&& estado.dirty" class="text-danger">Campo Obrigatório</span>
+        </div>
+        <div class="form-group col">
+            <input type="text" placeholder="pais" class="form-control" formControlName="pais"><br>
+            <span *ngIf="pais.hasError ('required' )&& pais.dirty" class="text-danger">Campo Obrigatório</span>
+        </div>
+
+      </div>
+      <button type="submit" class="btn btn-danger">Cadastrar</button>
+    </form>
+
+  </div>

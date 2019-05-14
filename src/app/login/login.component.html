@@ -1,0 +1,16 @@
+<div class="container backgroundblack  ">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" >
+      <h1 class="text-light">Entrar</h1>
+      <div class="alert  text-danger py-2" [ngClass] ="{'alert-danger': erro!=''}" role="alert">{{erro}}</div> 
+      <div class="form-group">
+        <input type="text" placeholder="email" class="form-control" formControlName="email" [class.is-invalid]="email.dirty && email.invalid"><br>
+        <span *ngIf="email.hasError ('required' )&& !email.pristine"  class="text-danger">Campo Obrigatório</span>
+        <span *ngIf="email.hasError('email') && email.dirty">E-mail em formato inválido</span>
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="password" class="form-control" formControlName="password"><br>
+        <span *ngIf="password.hasError ('required' )&& password.dirty" class="text-danger">Campo Obrigatório</span>
+      </div>
+      <button type="submit" class="btn btn-danger">Entrar</button>
+    </form>
+  </div>
